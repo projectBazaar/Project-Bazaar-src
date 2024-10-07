@@ -1,83 +1,42 @@
-name: Deploy
+name: Deploy Vite App to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # Change 'main' if your default branch is different
 
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-
-    steps:
-      # Step 1: Checkout the code from the repository
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      # Step 2: Setup Node.js environment
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'  # Replace with your Node.js version if different
-
-      # Step 3: Install dependencies
-      - name: Install dependencies
-        run: npm install
-
-      # Step 4: Inject Environment Variables
-      - name: Inject Environment Variables
-        run: |
-          echo "VITE_PROJECT_ID=${{ secrets.VITE_PROJECT_ID }}" >> .env
-          echo "VITE_FB_API_KEY=${{ secrets.VITE_FB_API_KEY }}" >> .env
-          echo "VITE_FB_AUTH_DOMAIN=${{ secrets.VITE_FB_AUTH_DOMAIN }}" >> .env
-          echo "VITE_FB_DB_URL=${{ secrets.VITE_FB_DB_URL }}" >> .env
-          echo "VITE_FB_STORAGE_BUCKET=${{ secrets.VITE_FB_STORAGE_BUCKET }}" >> .env
-          echo "VITE_FB_APP_ID=${{ secrets.VITE_FB_APP_ID }}" >> .env
-          echo "VITE_FB_MSG_SENDER_ID=${{ secrets.VITE_FB_MSG_SENDER_ID }}" >> .env
-          echo "VITE_EMAIL=${{ secrets.VITE_EMAIL }}" >> .env
-          echo "VITE_CLOUDINARY_CLOUD_NAME=${{ secrets.VITE_CLOUDINARY_CLOUD_NAME }}" >> .env
-          echo "VITE_CLOUDINARY_API_KEY=${{ secrets.VITE_CLOUDINARY_API_KEY }}" >> .env
-          echo "VITE_CLOUDINARY_API_SECRET=${{ secrets.VITE_CLOUDINARY_API_SECRET }}" >> .env
-
-      # Step 5: Build the project
-      - name: Build project
-        run: npm run build
-
-      # Step 6: Upload the production build (`dist`) as an artifact
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: production-files
-          path: ./dist
-
-      - name: Debug - Check if environment variables are set
-        run: |
-          echo "VITE_PROJECT_ID is $VITE_PROJECT_ID"
-        env:
-          VITE_PROJECT_ID: ${{ secrets.VITE_PROJECT_ID }}
-
   deploy:
-    name: Deploy
-    needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
 
     steps:
-      # Step 1: Checkout the code from the repository (not mandatory here, but good practice)
-      - name: Checkout repo
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      # Step 2: Download the build artifact
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: production-files
-          path: ./dist
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
 
-      # Step 3: Deploy the `dist` folder to GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build the project
+      run: npm run build
+      env:
+        VITE_PROJECT_ID: ${{ secrets.VITE_PROJECT_ID }}
+        VITE_FB_API_KEY: ${{ secrets.VITE_FB_API_KEY }}
+        VITE_FB_AUTH_DOMAIN: ${{ secrets.VITE_FB_AUTH_DOMAIN }}
+        VITE_FB_DB_URL: ${{ secrets.VITE_FB_DB_URL }}
+        VITE_FB_STORAGE_BUCKET: ${{ secrets.VITE_FB_STORAGE_BUCKET }}
+        VITE_FB_APP_ID: ${{ secrets.VITE_FB_APP_ID }}
+        VITE_FB_MSG_SENDER_ID: ${{ secrets.VITE_FB_MSG_SENDER_ID }}
+        VITE_EMAIL: ${{ secrets.VITE_EMAIL }}
+        VITE_CLOUDINARY_CLOUD_NAME: ${{ secrets.VITE_CLOUDINARY_CLOUD_NAME }}
+        VITE_CLOUDINARY_API_KEY: ${{ secrets.VITE_CLOUDINARY_API_KEY }}
+        VITE_CLOUDINARY_API_SECRET: ${{ secrets.VITE_CLOUDINARY_API_SECRET }}
+
+    - name: Deploy to GitHub Pages
+      run: npm run deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub provides this automatically
