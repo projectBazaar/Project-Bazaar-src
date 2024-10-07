@@ -146,7 +146,7 @@ export default function Login() {
                 <br/>
                 {!currentUser && <div>
 
-                  <p>Not a Registered User?</p><NavLink to={"/register"}><p className='text-blue-700 font-semibold'>Register</p></NavLink>
+                  <p>Not a Registered User?</p><NavLink to={"/project-bazaar-src/register"}><p className='text-blue-700 font-semibold'>Register</p></NavLink>
                   </div>}
 
          
