@@ -128,7 +128,7 @@ const ProjectForm = () => {
         console.log(currentUser);
 
         if (currentUser?.email !== import.meta.env.VITE_EMAIL) {
-            navigate("/", { replace: true });
+            navigate("/project-bazaar-src/", { replace: true });
             console.log("Not Allowed");
         }
     }, [currentUser]);
