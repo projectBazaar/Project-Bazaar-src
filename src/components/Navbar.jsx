@@ -22,10 +22,10 @@ export default function Navbar() {
   }, [currentUser]);
 
   const navigation = [
-    { name: 'Home', href: '/', show: currentUser ? true : false },
-    { name: 'Register', href: '/register', show: currentUser ? false : true },
-    { name: 'Sign in', href: '/login', show: currentUser ? false : true },
-    { name: 'Add', href: '/project/form', show: currentUser?.email===import.meta.env.VITE_EMAIL ? true : false },
+    { name: 'Home', href: '/project-bazaar-src', show: currentUser ? true : false },
+    { name: 'Register', href: '/project-bazaar-src/register', show: currentUser ? false : true },
+    { name: 'Sign in', href: '/project-bazaar-src/login', show: currentUser ? false : true },
+    { name: 'Add', href: '/project-bazaar-src/project/form', show: currentUser?.email===import.meta.env.VITE_EMAIL ? true : false },
   ];
 
   function logOut() {
@@ -72,7 +72,7 @@ export default function Navbar() {
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex flex-shrink-0 items-center font-mono text-white text-4xl">
-              <NavLink to={'/'}>Project-Lo</NavLink>
+              <NavLink to={'/project-bazaar-src/'}>Project-Lo</NavLink>
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
