@@ -31,7 +31,7 @@ export default function Navbar() {
   function logOut() {
     logoutUzer();
     setCurrentUser(null);
-    navigate('/login');
+    navigate('/project-bazaar-src/login');
   }
 
   useEffect(() => {
