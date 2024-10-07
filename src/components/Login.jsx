@@ -32,7 +32,7 @@ export default function Login() {
           notify("Login Successful 🥳","success","bottom-center",2000);  
           console.log("Login done ",res.user.uid)
           // getUserDetailsById(res.user.uid)
-          navigate("/",{replace:true})
+          navigate("/project-bazaar-src/",{replace:true})
           setCurrentUser(res.user)
         }
       )
@@ -63,7 +63,7 @@ export default function Login() {
   useEffect(()=>{
     if(currentUser !==null)
     {
-      navigate("/")
+      navigate("/project-bazaar-src/")
     }
     
   },[currentUser])
