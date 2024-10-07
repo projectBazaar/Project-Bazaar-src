@@ -304,7 +304,7 @@ catch(err)
 </div>
 
          {!currentUser && <div>
-          <p>Already a user?</p><NavLink to={"/login"}><p className='text-blue-700 font-semibold'>Login</p></NavLink>
+          <p>Already a user?</p><NavLink to={"/project-bazaar-src/login"}><p className='text-blue-700 font-semibold'>Login</p></NavLink>
           </div>}
 
         {
