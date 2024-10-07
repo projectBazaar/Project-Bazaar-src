@@ -17,7 +17,7 @@ import SearchPage from './components/SearchPage.jsx'
 
 const router=createBrowserRouter([
   {
-    path:"/",
+    path:"/project-bazaar-src/",
     element:
     <ProtectedRoute>
       <Navbar/>
@@ -26,7 +26,7 @@ const router=createBrowserRouter([
     </ProtectedRoute>
   },
   {
-    path:"/register",
+    path:"/project-bazaar-src/register",
     element:
     <>
       <Navbar/>
@@ -35,7 +35,7 @@ const router=createBrowserRouter([
     </>
   },
   {
-    path:"/login",
+    path:"/project-bazaar-src/login",
     element:<>
       <Navbar/>
     
@@ -43,14 +43,14 @@ const router=createBrowserRouter([
     </>
   },
   {
-    path:"/project/:pid",
+    path:"/project-bazaar-src/project/:pid",
     element:<ProtectedRoute>
       <Navbar/>
     <ProjectDisplay/>
   </ProtectedRoute>
   },
   {
-    path:"/search",
+    path:"/project-bazaar-src/search",
     element:<ProtectedRoute>
       <Navbar/>
     <SearchPage/>
@@ -58,7 +58,7 @@ const router=createBrowserRouter([
   },
 
   {
-    path:"/project/form",
+    path:"/project-bazaar-src/project/form",
     element:
     <ProtectedRoute>
       <Navbar/>
@@ -75,7 +75,7 @@ createRoot(document.getElementById('root')).render(
         
          
           
-          <RouterProvider router={router} basename="/project-bazaar-src/" />
+          <RouterProvider router={router}  />
           <ToastContainer />
         
       </UserContextProvider>
