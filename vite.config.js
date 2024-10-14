@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   define: {
-    'process.env': process.env,  // This ensures process.env variables are available
+    'process.env': process.env,  
+    base:"/project-bazaar-src/"
   },
-  base:"/project-bazaar-src/"
 })

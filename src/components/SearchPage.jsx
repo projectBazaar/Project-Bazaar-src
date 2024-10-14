@@ -85,7 +85,7 @@ const SearchPage = () => {
             <div className="flex flex-wrap gap-3 justify-start text-center">
               {projectSearchResults.length > 0 ? (
                 projectSearchResults.map((project) => (
-                    <NavLink to={`/project/${project.pid}`} onClick={()=>{
+                    <NavLink to={`/project-bazaar-src/project/${project.pid}`} onClick={()=>{
                         setIsSearchOpen(false)
                     }}>
                   <div key={project.pid} className="rounded-lg w-60 h-auto flex flex-col justify-start items-start px-3 py-2 bg-gray-100 hover:bg-gray-200 shadow-sm">

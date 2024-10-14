@@ -20,7 +20,7 @@ const ProjectCards = ({ proj_title, proj_media_url, proj_desc,proj_pid }) => {
         <div className="max-w-sm mx-auto bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:shadow-blue-300 h-[450px] flex flex-col justify-between">
           <div className="border-b px-4 pb-6">
             <div className="text-center my-4">
-              <NavLink to={`/project/${proj_pid}`} replace={true}>
+              <NavLink to={`/project-bazaar-src/project/${proj_pid}`} replace={true}>
                 {proj_media_url && !proj_media_url.includes('firebasestorage') ? (
                   <img
                     className="h-48 w-full object-cover rounded-sm border-4 border-white dark:border-gray-800 mx-auto my-4"
@@ -58,7 +58,7 @@ const ProjectCards = ({ proj_title, proj_media_url, proj_desc,proj_pid }) => {
               </div>
             </div>
             <div className="flex gap-2 px-2 justify-center">
-            <NavLink to={`/project/${proj_pid}`} replace={true}>
+            <NavLink to={`/project-bazaar-src/project/${proj_pid}`} replace={true}>
               <button
                 onClick={() => navigate(`/project/${proj_title}`)}
                 className="flex-1 rounded-full bg-blue-600 dark:bg-blue-800 text-white font-bold hover:bg-blue-800 dark:hover:bg-blue-900 px-4 py-2"

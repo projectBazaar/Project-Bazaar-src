@@ -87,11 +87,6 @@ const getProjects=async() => {
     setIsSearchOpen,
     isSearchOpen
 
-  
-
-
-    
-   
 }
   
 
