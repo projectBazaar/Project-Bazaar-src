@@ -10,7 +10,11 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
 
+    
     steps:
+      - name: Clear Cache
+        run: rm -rf node_modules package-lock.json
+             npm install
       - name: Checkout repo
         uses: actions/checkout@v3
 
