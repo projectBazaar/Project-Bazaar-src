@@ -20,7 +20,7 @@ export default function AuthContextProvider({children})
     const provider = new GoogleAuthProvider();
     
     useEffect(() => {
-      const unsubscribe=(auth,user=>{
+      const unsubscribe=onAuthStateChanged(auth,user=>{
     
         if(user)
         {
