@@ -22,10 +22,7 @@ jobs:
 
       - name: Build project
         run: npm run build
-
         env:
-          run:
-            
           VITE_PROJECT_ID: ${{ secrets.VITE_PROJECT_ID }}
           VITE_FB_API_KEY: ${{ secrets.VITE_FB_API_KEY }}
           VITE_FB_AUTH_DOMAIN: ${{ secrets.VITE_FB_AUTH_DOMAIN }}
@@ -37,6 +34,8 @@ jobs:
           VITE_CLOUDINARY_CLOUD_NAME: ${{ secrets.VITE_CLOUDINARY_CLOUD_NAME }}
           VITE_CLOUDINARY_API_KEY: ${{ secrets.VITE_CLOUDINARY_API_KEY }}
           VITE_CLOUDINARY_API_SECRET: ${{ secrets.VITE_CLOUDINARY_API_SECRET }}
+
+        
 
       - name: Inject Environment Variables
         run: |

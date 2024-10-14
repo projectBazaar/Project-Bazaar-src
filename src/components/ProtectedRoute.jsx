@@ -15,7 +15,7 @@ function ProtectedRoute({ children }) {
       if( currentUser ===null)
       {
 
-        navigate("/login",{replace:true})
+        navigate("/project-bazaar-src/login",{replace:true})
       }
     
   },[currentUser,location])

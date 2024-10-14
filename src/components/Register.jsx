@@ -88,7 +88,7 @@ export default function Register() {
 
 
 
-      navigate("/")
+      navigate("/project-bazaar-src/")
     }).catch((error) => {
       console.log(error);
       
@@ -167,7 +167,7 @@ try{
         console.log(err)
       }
 
-      navigate("/login",{replace:true})
+      navigate("/project-bazaar-src/login",{replace:true})
     }
   ).catch(err=>{
     if(err.message==="Firebase: Error (auth/email-already-in-use).")

@@ -22,7 +22,7 @@ export default function Navbar() {
   }, [currentUser]);
 
   const navigation = [
-    { name: 'Home', href: '/project-bazaar-src/', show: currentUser ? true : false },
+    { name: 'Home', href: '/project-bazaar-src', show: currentUser ? true : false },
     { name: 'Register', href: '/project-bazaar-src/register', show: currentUser ? false : true },
     { name: 'Sign in', href: '/project-bazaar-src/login', show: currentUser ? false : true },
     { name: 'Add', href: '/project-bazaar-src/project/form', show: currentUser?.email===import.meta.env.VITE_EMAIL ? true : false },

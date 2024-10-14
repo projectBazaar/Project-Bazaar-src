@@ -60,7 +60,7 @@ const ProjectCards = ({ proj_title, proj_media_url, proj_desc,proj_pid }) => {
             <div className="flex gap-2 px-2 justify-center">
             <NavLink to={`/project-bazaar-src/project/${proj_pid}`} replace={true}>
               <button
-                onClick={() => navigate(`/project/${proj_title}`)}
+                onClick={() => navigate(`/project-bazaar-src/project/${proj_title}`)}
                 className="flex-1 rounded-full bg-blue-600 dark:bg-blue-800 text-white font-bold hover:bg-blue-800 dark:hover:bg-blue-900 px-4 py-2"
               >
                 View Project
