@@ -60,8 +60,8 @@ const SearchPage = () => {
   }, [debouncedSearch, db]);
 
   return (
-    <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6 mt-0 border-2">
-      <h2 className="text-2xl font-semibold text-center text-gray-800 mb-4">Search Projects</h2>
+    <div className="max-w-md mx-auto bg-white   p-6 mt-0 ">
+      {/* <h2 className="text-2xl font-semibold text-center text-gray-800 mb-4">Search Projects</h2> */}
       <div className="flex flex-col space-y-2">
         <div className="relative">
           <input
@@ -81,11 +81,11 @@ const SearchPage = () => {
           <div className="text-center">Loading...</div>
         ) : (
           <div className="mt-4">
-            <h3 className="text-lg font-semibold">Projects</h3>
+            {/* <h3 className="text-lg font-semibold">Projects</h3> */}
             <div className="flex flex-wrap gap-3 justify-start text-center">
               {projectSearchResults.length > 0 ? (
                 projectSearchResults.map((project) => (
-                    <NavLink to={`/project-bazaar-src/project/${project.pid}`} onClick={()=>{
+                    <NavLink key={project} to={`/project-bazaar-src/project/${project.pid}`} onClick={()=>{
                         setIsSearchOpen(false)
                     }}>
                   <div key={project.pid} className="rounded-lg w-60 h-auto flex flex-col justify-start items-start px-3 py-2 bg-gray-100 hover:bg-gray-200 shadow-sm">

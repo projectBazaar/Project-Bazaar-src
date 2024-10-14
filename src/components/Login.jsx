@@ -30,7 +30,7 @@ export default function Login() {
       .then(
         res=>{
           notify("Login Successful 🥳","success","bottom-center",2000);  
-          console.log("Login done ",res.user.uid)
+          //console.log("Login done ",res.user.uid)
           // getUserDetailsById(res.user.uid)
           navigate("/project-bazaar-src/",{replace:true})
           setCurrentUser(res.user)
@@ -52,7 +52,7 @@ export default function Login() {
     }
     catch(err)
     {
-        console.log(err);
+        //console.log(err);
         notify(err.message,"error","bottom-center",4000);
 
     }

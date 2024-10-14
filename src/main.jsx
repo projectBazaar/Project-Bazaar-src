@@ -13,6 +13,7 @@ import ProjectForm from './components/ProjectForm.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import Navbar from './components/Navbar.jsx'
 import SearchPage from './components/SearchPage.jsx'
+import ProjectTitles from './components/ProjectTitles.jsx'
 
 
 const router=createBrowserRouter([
@@ -47,6 +48,13 @@ const router=createBrowserRouter([
     element:<ProtectedRoute>
       <Navbar/>
     <ProjectDisplay/>
+  </ProtectedRoute>
+  },
+  {
+    path:"/project-bazaar-src/titles",
+    element:<ProtectedRoute>
+      <Navbar/>
+    <ProjectTitles/>
   </ProtectedRoute>
   },
   {

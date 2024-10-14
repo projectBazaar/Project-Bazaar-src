@@ -14,7 +14,7 @@ const getProjectByPid = async (pid) => {
       const projectData = querySnapshot.docs.map(doc => doc.data());
       return projectData[0]; // Return the first matching project
     } else {
-      console.log('No project found with the given pid.');
+      //console.log('No project found with the given pid.');
       return null; // No project found
     }
   } catch (error) {

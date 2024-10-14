@@ -82,6 +82,6 @@ export default function AuthContextProvider({children})
 }
 
 export function useAuth(){
-    // console.log(useContext(AuthContext))
+    // //console.log(useContext(AuthContext))
     return useContext(AuthContext)
 }

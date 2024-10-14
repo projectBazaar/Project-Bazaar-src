@@ -18,11 +18,12 @@ export default function Navbar() {
   const searchRef = useRef(null);
 
   useEffect(() => {
-    console.log('User Changed');
+    //console.log('User Changed');
   }, [currentUser]);
 
   const navigation = [
     { name: 'Home', href: '/project-bazaar-src', show: currentUser ? true : false },
+    { name: 'Projects', href: '/project-bazaar-src/titles', show: currentUser ? true : false },
     { name: 'Register', href: '/project-bazaar-src/register', show: currentUser ? false : true },
     { name: 'Sign in', href: '/project-bazaar-src/login', show: currentUser ? false : true },
     { name: 'Add', href: '/project-bazaar-src/project/form', show: currentUser?.email===import.meta.env.VITE_EMAIL ? true : false },
@@ -34,9 +35,14 @@ export default function Navbar() {
     navigate('/project-bazaar-src/login');
   }
 
-  useEffect(() => {
-    console.log(currentUser);
-  }, [currentUser]);
+  const truncate = (str, maxLength=15) => {
+    if (str.length <= maxLength) return str;
+    return str.slice(0, maxLength) + '...';
+  };
+
+  // useEffect(() => {
+  //   //console.log(currentUser);
+  // }, [currentUser]);
 
   // Close search page when clicking outside
   const handleClickOutside = (event) => {
@@ -99,7 +105,7 @@ export default function Navbar() {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             {/* Toggle Search Overlay */}
-            <button
+            {/* <button
               type="button"
               onClick={() => setIsSearchOpen(true)}
               className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 mx-1 focus:ring-white focus:ring-offset-1 focus:ring-offset-gray-800"
@@ -107,7 +113,7 @@ export default function Navbar() {
               <span className="absolute -inset-1.5" />
               <span className="sr-only">Search</span>
               <IoSearchOutline size={25} />
-            </button>
+            </button> */}
 
             {/* Notifications */}
 
@@ -131,7 +137,7 @@ export default function Navbar() {
               )}
               <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none">
                 <span className="text-blue-700 font-mono p-2 m-auto">
-                  {currentUser && currentUser.email}
+                  {currentUser && truncate(currentUser.displayName)}
                 </span>
 
                 <MenuItem>

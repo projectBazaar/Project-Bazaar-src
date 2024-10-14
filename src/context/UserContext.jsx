@@ -54,12 +54,12 @@ const getProjects=async() => {
   try {
     // Reference to the 'projects' collection
     const projectsCollectionRef =  collection(db, "projects");
-    console.log("called");
-    // console.log(projectsCollectionRef);
+    //console.log("called");
+    // //console.log(projectsCollectionRef);
     
     // Get all documents from the 'projects' collection
     const querySnapshot = await getDocs(projectsCollectionRef);
-    // console.log(querySnapshot);
+    // //console.log(querySnapshot);
 
     // Create an array to store the projects
     let projects = [];
@@ -73,10 +73,12 @@ const getProjects=async() => {
     // Return the projects
     return projects;
   } catch (error) {
-    console.error("Error fetching projects:", error);
+    //console.error("Error fetching projects:", error);
     return [];
   }
  }
+
+
 
 
   const value={
@@ -85,7 +87,8 @@ const getProjects=async() => {
     setProgress,
     progress,
     setIsSearchOpen,
-    isSearchOpen
+    isSearchOpen,
+    // getProjectsTitleandPid
 
 }
   

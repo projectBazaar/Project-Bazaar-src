@@ -4,6 +4,7 @@ import Register from './components/Register'
 // import {getProjects} from './context/UserContext'
 import { useUsers } from './context/UserContext';
 import ProjectCards from './components/ProjectCards'
+import SearchPage from './components/SearchPage';
 function App() {
 
   const { getProjects } = useUsers();
@@ -24,13 +25,13 @@ function App() {
             projekt.push(element)
           }
         );
-        console.log(projekt);
+        //console.log(projekt);
         
         setProjects(projekt);
       }
     )
     .catch((err) => {
-      console.log(err);
+      //console.log(err);
       
     })
     
@@ -42,7 +43,7 @@ function App() {
 
 
   useEffect(() => {
-    console.log(currentUser);
+    //console.log(currentUser);
 
   }, [currentUser]);
   
@@ -50,6 +51,7 @@ function App() {
 
   return (
     <>
+    <SearchPage/>
     <div className='flex gap-2 justify-evenly flex-wrap mx-2 '>
   {
     

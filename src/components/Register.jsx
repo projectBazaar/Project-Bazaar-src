@@ -2,7 +2,7 @@ import React,{useEffect,useState,useRef, useContext,useMemo} from 'react'
 import { useForm } from "react-hook-form";
 
 import {useNavigate,NavLink} from 'react-router-dom'
-import {GoogleAuthProvider} from 'firebase/auth'
+import {GoogleAuthProvider,updateProfile} from 'firebase/auth'
 import { Bounce, Flip, Slide, ToastContainer, Zoom, toast } from 'react-toastify';
 import { useAuth } from '../context/AuthContext';
 import notify from './notify';
@@ -19,10 +19,7 @@ export default function Register() {
 
 
   const navigate = useNavigate();
-  // const [isReqSuccess,setIsReqSuccess]=useState(false);
-  // const [profilePhoto, setProfilePhoto] = useState("something");
-  // const [userEmails,setUserEmails]=useState([])
-  // const [showError,setShowError]=useState(false)
+
 
   const { register, handleSubmit,formState: { errors,isSubmitting,isSubmitted} } = useForm();
 
@@ -70,27 +67,23 @@ export default function Register() {
 
 
 
-
-  
-
-
   const handleSignInProvider=async()=>{
     return  loginWithProvider().then(async(result) => {
 
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      setIsFirstLogin(!(user.email));
-      getUserDetailsById(user.uid)
-      console.log(user)
+      // setIsFirstLogin(!(user.email));
+      setCurrentUser(user)
+      //console.log(user)
 
-      console.log(user)
+      //console.log(user)
 
 
 
       navigate("/project-bazaar-src/")
     }).catch((error) => {
-      console.log(error);
+      //console.log(error);
       
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -103,10 +96,6 @@ export default function Register() {
 
 
 
-
-  
-
-
   const onSubmit = async (data) => {
 
 //Wanted
@@ -115,56 +104,17 @@ try{
  await registerUzer(data.email,data.password).then(
   async (userCredential)=>{
       notify("User Registered Successfully 🥳","success","bottom-center",2000);  
-      console.log(userCredential);
+      //console.log(userCredential);
       const user = userCredential.user;
       
-      // console.log(data);
+      // //console.log(data);
       try{
 
-      //  srcSetter();
-
-      console.log(user)
-
-      // const docRef=await addDoc(collection(db,"users"),
-      // {
-      //   uid: user.uid,
-      //   username: data.fname,
-      //   email: user.email,
-      //   profilePictureURL: srcSetter(),
-      //   bio: 'This is a bio',
-      //   followers: [],
-      //   following: [],
-      //   accountPrivacy: 'public',
-      //   notificationPreferences: {
-      //     email: true,
-      //     push: true
-      //   },
-      //   twoFactorEnabled: false,
-      //   posts: [],
-      //   accountStatus: 'active',
-      //   verificationStatus: 'unverified',
-      //   postsLiked:[]
-      // }
-
-      
-      // //
-      // ).then((res)=>{
-      //   setIsFirstLogin(true);
-      //   console.log("Document written with ID: ", res.id);
-      //   console.log("Response is", res._key.path.segments[1]);
-
-        
-
-
-      // }).catch((err)=>{
-      //     console.log(err)
-      // })
-
-    
+        await updateProfile(user, { displayName: data.fname});
 
       }
       catch(err){
-        console.log(err)
+        //console.log(err)
       }
 
       navigate("/project-bazaar-src/login",{replace:true})
@@ -183,16 +133,11 @@ try{
 }
 catch(err)
 {
-  // console.log("Error iz ",err)
+  // //console.log("Error iz ",err)
   notify(err.message,"error","bottom-center",4000);
 
 }
 
-
-//Storing in Realtime DB
-
-
-// console.log(db)
   }
 
 

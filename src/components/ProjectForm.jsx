@@ -69,7 +69,7 @@ const ProjectForm = () => {
                                 'state_changed',
                                 (snapshot) => {
                                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                                    console.log('Upload progress:', progress);
+                                    //console.log('Upload progress:', progress);
                                     setUploadStatus(progress);
                                 },
                                 (error) => {
@@ -94,7 +94,7 @@ const ProjectForm = () => {
 
             // Wait for all uploads to complete
             const uploadedMediaURLs = await Promise.all(uploadPromises);
-            console.log('Uploaded media URLs:', uploadedMediaURLs);
+            //console.log('Uploaded media URLs:', uploadedMediaURLs);
 
             // Update the Firestore project document with the media URLs
             const projectDocRef = doc(db, 'projects', projectRef.id);
@@ -125,11 +125,11 @@ const ProjectForm = () => {
     };
 
     useEffect(() => {
-        console.log(currentUser);
+        //console.log(currentUser);
 
         if (currentUser?.email !== import.meta.env.VITE_EMAIL) {
             navigate("/project-bazaar-src/", { replace: true });
-            console.log("Not Allowed");
+            //console.log("Not Allowed");
         }
     }, [currentUser]);
 
