@@ -35,10 +35,10 @@ export default function Navbar() {
     navigate('/project-bazaar-src/login');
   }
 
-  const truncate = (str, maxLength=15) => {
-    if (str.length <= maxLength) return str;
-    return str.slice(0, maxLength) + '...';
-  };
+  // const truncate = (str, maxLength=15) => {
+  //   if (str.length <= maxLength) return str;
+  //   return str.slice(0, maxLength) + '...';
+  // };
 
   // useEffect(() => {
   //   //console.log(currentUser);
@@ -137,7 +137,7 @@ export default function Navbar() {
               )}
               <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none">
                 <span className="text-blue-700 font-mono p-2 m-auto">
-                  {currentUser!==null && truncate(currentUser?.displayName)}
+                  {currentUser && (currentUser?.displayName)}
                 </span>
 
                 <MenuItem>
